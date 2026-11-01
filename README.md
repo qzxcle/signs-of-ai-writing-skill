@@ -15,7 +15,7 @@ These signs are clues, not proof. Human writers share many of the same habits, a
 1. Clone this repo:
 
    ```bash
-   git clone https://github.com/YOUR-USERNAME/signs-of-ai-writing-skill.git
+   git clone https://github.com/qzxcle/signs-of-ai-writing-skill.git
    ```
 
 2. Copy the skill folder into your personal skills folder.
