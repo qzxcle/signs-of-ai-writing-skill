@@ -12,6 +12,16 @@ These signs are clues, not proof. Human writers share many of the same habits, a
 
 ## Install in Claude Code
 
+### Easiest: let Claude Code do it
+
+Start Claude Code and paste this request:
+
+```
+Install the skill from https://github.com/qzxcle/signs-of-ai-writing-skill as a personal skill: copy its signs-of-ai-writing folder into ~/.claude/skills/
+```
+
+### By hand, with git
+
 1. Clone this repo:
 
    ```bash
@@ -34,16 +44,31 @@ These signs are clues, not proof. Human writers share many of the same habits, a
    Copy-Item -Recurse "signs-of-ai-writing-skill\signs-of-ai-writing" "$HOME\.claude\skills\"
    ```
 
-3. Start Claude Code and type `/`. You should see `signs-of-ai-writing` in the list.
+### By hand, without git
 
-No git? Click the green **Code** button on this page, choose **Download ZIP**, unzip it, and copy the `signs-of-ai-writing` folder into `~/.claude/skills/`.
+1. Click the green **Code** button on this page and choose **Download ZIP**.
+2. Unzip it. You get a folder called `signs-of-ai-writing-skill-main`.
+3. Copy the `signs-of-ai-writing` folder from inside it into your skills folder.
 
-To use the skill in one project only, copy the folder into that project's `.claude/skills/` folder instead.
+   macOS (assuming the download is in your Downloads folder):
+
+   ```bash
+   mkdir -p ~/.claude/skills
+   cp -r ~/Downloads/signs-of-ai-writing-skill-main/signs-of-ai-writing ~/.claude/skills/
+   ```
+
+   Windows: paste `%USERPROFILE%\.claude\skills` into the File Explorer address bar (create the `skills` folder if it doesn't exist), then copy the `signs-of-ai-writing` folder there.
+
+### Check that it worked
+
+Start Claude Code and type `/`. You should see `signs-of-ai-writing` in the list.
+
+To use the skill in one project only, put the folder in that project's `.claude/skills/` folder instead of your personal one.
 
 ## Install in the Claude app (web or desktop)
 
 1. Click the green **Code** button on this page and choose **Download ZIP**.
-2. Unzip it. Inside you will find a folder called `signs-of-ai-writing`.
+2. Unzip it. Inside the `signs-of-ai-writing-skill-main` folder you will find a folder called `signs-of-ai-writing`.
 3. Compress just that folder into its own ZIP file (on a Mac: right-click, Compress; on Windows: right-click, Send to, Compressed (zipped) folder).
 4. In Claude, go to **Customize > Skills**, click **+**, then **Create skill > Upload a skill**, and choose the ZIP from step 3.
 
@@ -58,6 +83,30 @@ Ask in plain language and Claude uses the skill when the request fits:
 - "Rewrite this paragraph so it's specific instead of generic."
 
 In Claude Code you can also call it directly with `/signs-of-ai-writing`.
+
+## Update or remove
+
+To update after a new version is published, get the latest files and replace the old folder.
+
+macOS or Linux:
+
+```bash
+cd signs-of-ai-writing-skill
+git pull
+rm -rf ~/.claude/skills/signs-of-ai-writing
+cp -r signs-of-ai-writing ~/.claude/skills/
+```
+
+Windows (PowerShell):
+
+```powershell
+cd signs-of-ai-writing-skill
+git pull
+Remove-Item -Recurse -Force "$HOME\.claude\skills\signs-of-ai-writing"
+Copy-Item -Recurse "signs-of-ai-writing" "$HOME\.claude\skills\"
+```
+
+To remove it, delete the `signs-of-ai-writing` folder from `~/.claude/skills/`. In the Claude app, go to **Customize > Skills**, open the skill, and delete it from the **...** menu.
 
 ## What's in this repo
 
